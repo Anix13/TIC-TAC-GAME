@@ -14,6 +14,10 @@ class TicTac(QMainWindow, Ui_MainWindow):
         for i in range(9):
             self.ui.buttons[i].clicked.connect(self.process)
 
+        self.ui.switcher.button(0).setEnabled(True)
+        self.ui.switcher.button(1).setEnabled(True)
+        self.ui.switcher.button(1).setChecked(True)
+
 
 
     def process(self):
@@ -26,8 +30,25 @@ class TicTac(QMainWindow, Ui_MainWindow):
             self.ui.status_label.setText("Ход игрока X")
             self.ui.switcher.button(1).setChecked(True)
         else:
-            self.ui.status_label.setText("Ход игрока 0")
+            self.ui.status_label.setText("Ход игрока O")
             self.ui.switcher.button(0).setChecked(True)
+
+        winner = self.checkWinner()
+
+
+
+    def checkWinner(self):
+        winPos = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))
+        for pos in winPos:
+            if self.ui.buttons[pos[0]].text() == self.ui.buttons[pos[1]].text() == self.ui.buttons[pos[2]].text() == "O":
+                for i in range(9):
+                    self.ui.buttons[i].setEnabled(False)
+                    self.ui.status_label.setText("игрок O выиграл")
+
+            if self.ui.buttons[pos[0]].text() == self.ui.buttons[pos[1]].text() == self.ui.buttons[pos[2]].text() == "X":
+                for i in range(9):
+                    self.ui.buttons[i].setEnabled(False)
+                    self.ui.status_label.setText("игрок X выиграл")
 
 
 
