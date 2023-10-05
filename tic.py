@@ -153,6 +153,15 @@ class Ui_MainWindow(object):
         font.setFamily("Microsoft JhengHei UI")
         font.setPointSize(50)
         self.btn9.setFont(font)
+        self.buttons = [self.btn1,
+                        self.btn2,
+                        self.btn3,
+                        self.btn4,
+                        self.btn5,
+                        self.btn6,
+                        self.btn7,
+                        self.btn8,
+                        self.btn9]
         self.horizontalLayout_5.addWidget(self.btn9)
         self.verticalLayout.addLayout(self.horizontalLayout_5)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -163,6 +172,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Tic Tac Game"))
-        self.status_label.setText(_translate("MainWindow", "Начните игру "))
-        self.Button.setText(_translate("MainWindow", "Старт"))
+        self.status_label.setText(_translate("MainWindow", "Выберите символ и ходите"))
+        self.Button.setText(_translate("MainWindow", "Заново"))
 
