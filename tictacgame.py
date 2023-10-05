@@ -11,17 +11,22 @@ class TicTac(QMainWindow, Ui_MainWindow):
         self.ui.setupUi(self)
         self.setWindowIcon(QIcon('icon.png'))
 
+        self.ui.Button.clicked.connect(self.start)
+
         for i in range(9):
             self.ui.buttons[i].clicked.connect(self.process)
 
+        self.start()
+
+
+    def start(self):
         self.ui.switcher.button(0).setEnabled(True)
         self.ui.switcher.button(1).setEnabled(True)
         self.ui.switcher.button(1).setChecked(True)
-
-
-
-
-
+        for i in range(9):
+            self.ui.buttons[i].setEnabled(True)
+            self.ui.buttons[i].setText("")
+        self.ui.status_label.setText("Выберите символ и ходите")
 
     def process(self):
         self.sender().setText(self.ui.switcher.button(self.ui.switcher.checkedId()).text())
@@ -41,10 +46,6 @@ class TicTac(QMainWindow, Ui_MainWindow):
 
         if not self.checkDraw() and not winner:
             self.ui.status_label.setText("Ничья")
-
-
-
-
 
 
     def checkWinner(self):
