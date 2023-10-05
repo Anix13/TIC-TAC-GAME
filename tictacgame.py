@@ -11,13 +11,8 @@ class TicTac(QMainWindow, Ui_MainWindow):
         self.ui.setupUi(self)
         self.setWindowIcon(QIcon('icon.png'))
 
-
         for i in range(9):
             self.ui.buttons[i].clicked.connect(self.process)
-
-
-
-
 
 
 
@@ -28,10 +23,10 @@ class TicTac(QMainWindow, Ui_MainWindow):
         self.ui.switcher.button(0).setEnabled(False)
         self.ui.switcher.button(1).setEnabled(False)
         if self.ui.switcher.checkedId() == 0:
-            self.ui.status_label.setText("ход игрока X")
+            self.ui.status_label.setText("Ход игрока X")
             self.ui.switcher.button(1).setChecked(True)
         else:
-            self.ui.status_label.setText("ход игрока 0")
+            self.ui.status_label.setText("Ход игрока 0")
             self.ui.switcher.button(0).setChecked(True)
 
 
